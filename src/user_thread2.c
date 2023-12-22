@@ -12,7 +12,7 @@ int main() {
 			int r=s;
 			l=l+r;
 			s++;
-			if(s>1000000000) break;
+			if(s>100000000) break;
 		}
     }
     return 0;

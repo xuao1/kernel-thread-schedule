@@ -35,12 +35,12 @@ static int __init my_module_init(void) {
             printk(KERN_INFO "Sending SIGSTOP to %d and %d\n", pid1, pid2);
             kill_pid(pid_struct1, SIGSTOP, 1);
             kill_pid(pid_struct2, SIGSTOP, 1);
-            msleep(5000);
+            msleep(10000);
 
             printk(KERN_INFO "Sending SIGCONT to %d and %d\n", pid1, pid2);
             kill_pid(pid_struct1, SIGCONT, 1);
             kill_pid(pid_struct2, SIGCONT, 1);
-            msleep(5000);
+            msleep(10000);
         } else {
             printk(KERN_INFO "One or both tasks not found\n");
             break;
