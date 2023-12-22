@@ -4,8 +4,8 @@
 #include <linux/signal.h>
 #include <linux/delay.h>
 
-static int pid1 = 0;
-static int pid2 = 0;
+static int pid1 = 64977;
+static int pid2 = 64533;
 
 module_param(pid1, int, S_IRUGO);
 module_param(pid2, int, S_IRUGO);
