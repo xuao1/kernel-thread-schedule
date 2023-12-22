@@ -1,0 +1,1 @@
+cmd_/home/xxa/Desktop/schedule_test/kernel-thread-schedule/src/modules.order := {   echo /home/xxa/Desktop/schedule_test/kernel-thread-schedule/src/kernel_thread2.ko; :; } | awk '!x[$$0]++' - > /home/xxa/Desktop/schedule_test/kernel-thread-schedule/src/modules.order
