@@ -1,1 +1,0 @@
-cmd_/home/xxa/Desktop/schedule_test/kernel-thread-schedule/src/Module.symvers := sed 's/\.ko$$/\.o/' /home/xxa/Desktop/schedule_test/kernel-thread-schedule/src/modules.order | scripts/mod/modpost -m -a  -o /home/xxa/Desktop/schedule_test/kernel-thread-schedule/src/Module.symvers -e -i Module.symvers   -T -

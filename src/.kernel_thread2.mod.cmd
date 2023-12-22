@@ -1,1 +1,0 @@
-cmd_/home/xxa/Desktop/schedule_test/kernel-thread-schedule/src/kernel_thread2.mod := { echo  /home/xxa/Desktop/schedule_test/kernel-thread-schedule/src/kernel_thread2.o;  echo; } > /home/xxa/Desktop/schedule_test/kernel-thread-schedule/src/kernel_thread2.mod
