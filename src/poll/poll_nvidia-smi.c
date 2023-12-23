@@ -18,6 +18,7 @@ int isGpuIdle(int deviceId) {
     if (fgets(output, sizeof(output)-1, fp) != NULL) {
         int gpuUtilization = atoi(output);
         pclose(fp);
+        printf("GPU Utilization is %d\n", gpuUtilization);
         return gpuUtilization == 0;
     } else {
         pclose(fp);
