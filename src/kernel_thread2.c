@@ -53,16 +53,25 @@ static int __init my_module_init(void) {
     task1 = pid_task(pid_struct1, PIDTYPE_PID);
     task2 = pid_task(pid_struct2, PIDTYPE_PID);
 
+    if (task1){
+        printk(KERN_INFO "Init. Sending SIGSTOP to %d\n", pid1);
+        kill_pid(pid_struct1, SIGSTOP, 1);
+    }
+    if (task2){
+        printk(KERN_INFO "Init. Sending SIGSTOP to %d\n", pid2);
+        kill_pid(pid_struct2, SIGSTOP, 1);
+    }
+
     while (loop_continue) {
         if (task1 && task2) {
-            printk(KERN_INFO "Sending SIGSTOP to %d and %d\n", pid1, pid2);
-            kill_pid(pid_struct1, SIGSTOP, 1);
+            printk(KERN_INFO "Sending SIGCONT to %d and sending SIGSTOP to %d\n", pid1, pid2);
+            kill_pid(pid_struct1, SIGCONT, 1);
             kill_pid(pid_struct2, SIGSTOP, 1);
             msleep(10000);
 
-            printk(KERN_INFO "Sending SIGCONT to %d and %d\n", pid1, pid2);
-            kill_pid(pid_struct1, SIGCONT, 1);
+            printk(KERN_INFO "Sending SIGCONT to %d and sending SIGSTOP to %d\n", pid2, pid1);
             kill_pid(pid_struct2, SIGCONT, 1);
+            kill_pid(pid_struct1, SIGSTOP, 1);
             msleep(10000);
         } else {
             printk(KERN_INFO "One or both tasks not found\n");
@@ -81,12 +90,12 @@ static void __exit my_module_exit(void) {
     pid_struct2 = find_get_pid(pid2);
 
     if (pid_struct1) {
-        printk(KERN_INFO "Sending SIGTERM to %d\n", pid1);
+        printk(KERN_INFO "Final. Sending SIGTERM to %d\n", pid1);
         kill_pid(pid_struct1, SIGTERM, 1);
         put_pid(pid_struct1); 
     }
     if (pid_struct2) {
-        printk(KERN_INFO "Sending SIGTERM to %d\n", pid2);
+        printk(KERN_INFO "Final. Sending SIGTERM to %d\n", pid2);
         kill_pid(pid_struct2, SIGTERM, 1);
         put_pid(pid_struct2);
     }
